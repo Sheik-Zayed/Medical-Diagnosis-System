@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun May  8 21:01:15 2022
-
-@author: siddhardhan
-"""
 
 import pickle
 import streamlit as st
@@ -100,11 +95,11 @@ if (selected == 'Diabetes Prediction'):
         diab_prediction = diabetes_model.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]])
         
         if (diab_prediction[0] == 1):
-          diab_diagnosis = 'The person is diabetic'
+            diab_diagnosis = '<p style="text-align: center; font-size: 24px; font-weight: bold; color: red;">The person is diabetic</p>'
         else:
-          diab_diagnosis = 'The person is not diabetic'
+            diab_diagnosis = '<p style="text-align: center; font-size: 24px; font-weight: bold; color: green;">The person is not diabetic</p>'
         
-    st.success(diab_diagnosis)
+    st.markdown(diab_diagnosis, unsafe_allow_html=True)
 
 
 # Heart Disease Prediction Page
@@ -154,21 +149,19 @@ if (selected == 'Heart Disease Prediction'):
     with col1:
         thal = st.text_input('thal: 0 = normal; 1 = fixed defect; 2 = reversable defect')
      
-     
     # code for Prediction
     heart_diagnosis = ''
     
     # creating a button for Prediction
-    
     if st.button('Heart Disease Test Result'):
-        heart_prediction = heart_disease_model.predict([[age, sex, cp, trestbps, chol, fbs, restecg,thalach,exang,oldpeak,slope,ca,thal]])                          
+        heart_prediction = heart_disease_model.predict([[age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]])                          
         
         if (heart_prediction[0] == 1):
-          heart_diagnosis = 'The person is having heart disease'
+            heart_diagnosis = '<p style="text-align: center; font-size: 24px; font-weight: bold; color: red;">The person is having heart disease</p>'
         else:
-          heart_diagnosis = 'The person does not have any heart disease'
+            heart_diagnosis = '<p style="text-align: center; font-size: 24px; font-weight: bold; color: green;">The person does not have any heart disease</p>'
         
-    st.success(heart_diagnosis)
+    st.markdown(heart_diagnosis, unsafe_allow_html=True)
     
 
 # Parkinson's Prediction Page
@@ -251,11 +244,11 @@ if (selected == "Parkinsons Prediction"):
     
     # creating a button for Prediction    
     if st.button("Parkinson's Test Result"):
-        parkinsons_prediction = parkinsons_model.predict([[fo, fhi, flo, Jitter_percent, Jitter_Abs, RAP, PPQ,DDP,Shimmer,Shimmer_dB,APQ3,APQ5,APQ,DDA,NHR,HNR,RPDE,DFA,spread1,spread2,D2,PPE]])                          
+        parkinsons_prediction = parkinsons_model.predict([[fo, fhi, flo, Jitter_percent, Jitter_Abs, RAP, PPQ, DDP, Shimmer, Shimmer_dB, APQ3, APQ5, APQ, DDA, NHR, HNR, RPDE, DFA, spread1, spread2, D2, PPE]])                          
         
         if (parkinsons_prediction[0] == 1):
-          parkinsons_diagnosis = "The person has Parkinson's disease"
+            parkinsons_diagnosis = '<p style="text-align: center; font-size: 24px; font-weight: bold; color: red;">The person has Parkinson\'s disease</p>'
         else:
-          parkinsons_diagnosis = "The person does not have Parkinson's disease"
+            parkinsons_diagnosis = '<p style="text-align: center; font-size: 24px; font-weight: bold; color: green;">The person does not have Parkinson\'s disease</p>'
         
-    st.success(parkinsons_diagnosis)
+    st.markdown(parkinsons_diagnosis, unsafe_allow_html=True)
